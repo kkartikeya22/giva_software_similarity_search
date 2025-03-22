@@ -2,6 +2,9 @@
 
 🚀 A FastAPI-based API for finding similar documents using **FAISS** and **sentence-transformers**.
 
+### 🌍 **Live API Link**
+🔗 API Base URL :- https://giva-software-similarity-search.onrender.com/
+
 ## 📌 Features
 - 🔍 **Search for Similar Documents** using embeddings.
 - ⚡ **FAISS Indexing** for fast similarity search.
