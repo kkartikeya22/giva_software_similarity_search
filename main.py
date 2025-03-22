@@ -29,15 +29,8 @@ def health_check():
     return {"status": "healthy"}
 
 @app.get("/api/search")
-async def search_documents(q: str = Query(..., title="Search Query"), metric: str = "cosine"):
-    """
-    Search for similar documents based on a query.
-    Metrics: cosine | l2
-    """
-    if metric not in ["cosine", "l2"]:
-        return {"error": "Invalid metric! Use 'cosine' or 'l2'."}
-    
-    results = await search_engine.search(q, top_k=5, metric=metric)
+async def search_documents(q: str = Query(None, title="Search Query"), metric: str = "cosine"):
+    results = search_engine.search(q, top_k=5, metric=metric) 
     return {"query": q, "results": results}
 
 # Local Development vs. Deployment
