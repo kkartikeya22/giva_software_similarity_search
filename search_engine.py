@@ -50,27 +50,27 @@ class DocumentSearch:
             return ["AI is transforming the world.", "Machine learning is a subset of AI."]
 
     def create_faiss_index(self):
-    """Convert documents to embeddings & store in FAISS"""
-    try:
-        if not self.documents:
-            logging.error("No documents found! FAISS index cannot be created.")
+        """Convert documents to embeddings & store in FAISS"""
+        try:
+            if not self.documents:
+                logging.error("No documents found! FAISS index cannot be created.")
+                return None, None
+
+            logging.debug("Generating embeddings for documents...")
+            embeddings = model.encode(self.documents, convert_to_numpy=True)
+
+            if embeddings.shape[0] == 0:
+                logging.error("Embeddings could not be generated! FAISS index cannot be created.")
+                return None, None
+
+            index = faiss.IndexFlatL2(embeddings.shape[1])
+            index.add(embeddings)
+
+            logging.debug("FAISS index created successfully!")
+            return index, embeddings
+        except Exception as e:
+            logging.error(f"Error creating FAISS index: {e}")
             return None, None
-
-        logging.debug("Generating embeddings for documents...")
-        embeddings = model.encode(self.documents, convert_to_numpy=True)
-
-        if embeddings.shape[0] == 0:
-            logging.error("Embeddings could not be generated! FAISS index cannot be created.")
-            return None, None
-
-        index = faiss.IndexFlatL2(embeddings.shape[1])
-        index.add(embeddings)
-
-        logging.debug("FAISS index created successfully!")
-        return index, embeddings
-    except Exception as e:
-        logging.error(f"Error creating FAISS index: {e}")
-        return None, None
 
 
     def search(self, query, top_k=5, metric="cosine"):
