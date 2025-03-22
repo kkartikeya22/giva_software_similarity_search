@@ -105,10 +105,5 @@ hypercorn main:app --bind 0.0.0.0:$PORT
 | **Works Locally But Not on Render** | **Restart service & check logs** |
 
 ---
-
-## 📄 **License**
-This project is **MIT Licensed**.
-
----
 🔥 **Developed by Kartikeya Katiyar** 🚀
 
