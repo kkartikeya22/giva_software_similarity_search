@@ -14,8 +14,7 @@
 ## 🛠️ **Installation & Setup**
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/your-repo-url.git
-cd your-repo
+git clone https://github.com/kkartikeya22/giva_software_similarity_search/blob/main
 ```
 
 ### **2️⃣ Create & Activate Virtual Environment**
