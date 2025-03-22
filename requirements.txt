@@ -1,0 +1,7 @@
+fastapi
+hypercorn
+sentence-transformers
+faiss-cpu
+numpy
+uvloop
+httptools 
